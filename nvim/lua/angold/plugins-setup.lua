@@ -17,6 +17,8 @@ if not status then -- if there is no packer, then we simply return
   return
 end
 
+vim.cmd [[packadd packer.nvim]]
+
 return packer.startup(function(use)
   use {"wbthomason/packer.nvim"}
   use {"nvim-lua/plenary.nvim"}
@@ -39,13 +41,41 @@ return packer.startup(function(use)
       ts_update()
     end,
   })
-  use('nvim-treesitter/playground')
 
+  use('nvim-treesitter/playground')
+  use('eandrju/cellular-automaton.nvim')
   use('theprimeagen/harpoon')
+
+  use('L3MON4D3/LuaSnip') -- Snippet
+  use('hrsh7th/cmp-buffer') -- nvim-cmp source for buffer words
+  use('hrsh7th/cmp-nvim-lsp') -- nvim-cmp source for neovim's built-in LSP
+  use('hrsh7th/nvim-cmp') -- Completion
+
+  use('neovim/nvim-lspconfig') -- LSP
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+
   if packer_bootstrap then
     require("packer").sync()
   end
 
 end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

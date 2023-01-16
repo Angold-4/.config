@@ -33,3 +33,7 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.iskeyword:append("-")
+
+-- encoding
+opt.encoding = 'utf-8'
+opt.fileencoding = 'utf.8'

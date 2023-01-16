@@ -2,7 +2,7 @@ local keymap = vim.keymap -- for conciseness
 
 -- general keymaps
 
--- 1. remapping the esc, feel right
+-- 1. remapping the esc, feels right
 keymap.set("i", "jk", "<ESC>")
 keymap.set("i", "Jk", "<ESC>")
 keymap.set("i", "JK", "<ESC>")
@@ -16,8 +16,12 @@ keymap.set("n", "<leader>+", "<C-a>") -- leader plus to increase number
 keymap.set("n", "H", "^") -- upper 'H' move to the begin of the line
 keymap.set("n", "L", "$") -- upper 'L' move to the end of the line
 
-keymap.set("n", "<C-j>", '}') -- move faster
-keymap.set("n", "<C-k>", '{')
+keymap.set("n", "<C-j>", "<C-d>") -- move faster
+keymap.set("n", "<C-k>", "<C-u>")
+
+keymap.set('n', 'dw', 'vb"_d') -- delete a word backwards
+
+keymap.set('n', '<C-a>', 'gg<S-v>G') -- select all
 
 -- 3. split the windows
 keymap.set("n", "<leader>sv", "<C-w>v") -- split vertically
@@ -44,3 +48,6 @@ keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in 
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
+
+-- cellular-automaton
+keymap.set("n", "<leader>rain", "<cmd>CellularAutomaton make_it_rain<CR>")
