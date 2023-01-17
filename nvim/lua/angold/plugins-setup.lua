@@ -48,13 +48,21 @@ return packer.startup(function(use)
   use('hrsh7th/cmp-buffer') -- nvim-cmp source for buffer words
   use('hrsh7th/cmp-nvim-lsp') -- nvim-cmp source for neovim's built-in LSP
   use('hrsh7th/nvim-cmp') -- Completion
+  use('romgrk/barbar.nvim') -- tab bar
 
   use('neovim/nvim-lspconfig') -- LSP
 
   use('nvim-telescope/telescope-file-browser.nvim')
 
   use('norcalli/nvim-colorizer.lua')
-  use('akinsho/nvim-bufferline.lua')
+
+  use('lewis6991/gitsigns.nvim')
+
+  use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+    require("toggleterm").setup()
+  end}
+
+  use {'numToStr/Navigator.nvim'}
 
   if packer_bootstrap then
     require("packer").sync()

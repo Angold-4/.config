@@ -9,10 +9,15 @@ saga.setup({
     edit = "<CR>",
   },
   ui = {
+    theme = 'round',
     colors = {
       normal_bg = "#022746",
     },
+    winblend = 0,
   },
+  symbol_in_winbar = {
+    enable = false,
+  }
 })
 
 local opts = {noremap = true, silent = true}

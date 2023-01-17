@@ -27,10 +27,10 @@ keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width
 keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
 
 -- 4. tab settings
-keymap.set("n", "<C-t>", ":tabnew<CR>") -- open new tab
-keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
-keymap.set("n", "<leader>tn", ":tabn<CR>") -- go to next tab
-keymap.set("n", "<leader>tp", ":tabp<CR>") -- go to previous tab
+-- keymap.set("n", "<C-t>", ":tabnew<CR>") -- open new tab
+-- keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
+-- keymap.set("n", "<leader>tn", ":tabn<CR>") -- go to next tab
+-- keymap.set("n", "<leader>tp", ":tabp<CR>") -- go to previous tab
 
 -- 5. plugin keymaps
 -- vim-maximizer
@@ -48,3 +48,11 @@ keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available 
 
 -- cellular-automaton
 keymap.set("n", "<leader>rain", "<cmd>CellularAutomaton make_it_rain<CR>")
+
+-- tabtab
+keymap.set("n", "<leader>k", "<Cmd>BufferPrevious<CR>")
+keymap.set("n", "<leader>j", "<Cmd>BufferNext<CR>")
+keymap.set("n", "<leader>x", "<Cmd>BufferClose<CR>")
+
+-- toggleterm
+keymap.set({"n", "t"}, "<C-]>", "<Cmd>lua _HTOP_TOGGLE()<CR>")
