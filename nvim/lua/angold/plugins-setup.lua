@@ -34,28 +34,27 @@ return packer.startup(function(use)
   use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
 
   -- treesitter configuration
-  use({
-    "nvim-treesitter/nvim-treesitter",
-    run = function()
-      local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-      ts_update()
-    end,
-  })
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
 
   use('nvim-treesitter/playground')
   use('eandrju/cellular-automaton.nvim')
   use('theprimeagen/harpoon')
 
+  use('glepnir/lspsaga.nvim')
   use('L3MON4D3/LuaSnip') -- Snippet
   use('hrsh7th/cmp-buffer') -- nvim-cmp source for buffer words
   use('hrsh7th/cmp-nvim-lsp') -- nvim-cmp source for neovim's built-in LSP
   use('hrsh7th/nvim-cmp') -- Completion
 
   use('neovim/nvim-lspconfig') -- LSP
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
+
+  use('nvim-telescope/telescope-file-browser.nvim')
+
+  use('norcalli/nvim-colorizer.lua')
+  use('akinsho/nvim-bufferline.lua')
 
   if packer_bootstrap then
     require("packer").sync()

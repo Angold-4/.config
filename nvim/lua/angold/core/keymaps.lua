@@ -16,9 +16,6 @@ keymap.set("n", "<leader>+", "<C-a>") -- leader plus to increase number
 keymap.set("n", "H", "^") -- upper 'H' move to the begin of the line
 keymap.set("n", "L", "$") -- upper 'L' move to the end of the line
 
-keymap.set("n", "<C-j>", "<C-d>") -- move faster
-keymap.set("n", "<C-k>", "<C-u>")
-
 keymap.set('n', 'dw', 'vb"_d') -- delete a word backwards
 
 keymap.set('n', '<C-a>', 'gg<S-v>G') -- select all
@@ -30,7 +27,7 @@ keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width
 keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
 
 -- 4. tab settings
-keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
+keymap.set("n", "<C-t>", ":tabnew<CR>") -- open new tab
 keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
 keymap.set("n", "<leader>tn", ":tabn<CR>") -- go to next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>") -- go to previous tab
