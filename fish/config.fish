@@ -1,11 +1,24 @@
 #!/usr/bin/fish
 
+set fish_greeting ""
+
+set -gx TERM xterm-256color
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
 alias vim="/opt/homebrew/bin/nvim"
 alias nvim="/opt/homebrew/bin/nvim"
+
+switch (uname)
+  case Darwin
+    source (dirname (status --current-filename))/config-osx.fish
+  case Linux
+    source (dirname (status --current-filename))/config-linux.fish
+  case '*'
+    source (dirname (status --current-filename))/config-windows.fish
+end
 
 # Kanagawa Fish shell theme
 # A template was taken and modified from Tokyonight:
