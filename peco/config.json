@@ -1,0 +1,16 @@
+{
+  "Prompt": "^_^:",
+  "Keymap": {
+    "C-k": "peco.SelectUp",
+    "C-j": "peco.SelectDown",
+    "q, C-c": "peco.Cancel"
+  },
+
+  "Style": {
+    "Basic": ["on_default", "default"],
+    "SavedSelection": ["bold", "on_yellow", "white"],
+    "Selected": ["underline", "on_cyan", "black"],
+    "Query": ["8", "bold"],
+    "Matched": ["8", "bold"]
+  }
+}
