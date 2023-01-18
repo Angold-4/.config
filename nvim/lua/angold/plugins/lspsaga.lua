@@ -11,7 +11,7 @@ saga.setup({
   ui = {
     theme = 'round',
     colors = {
-      normal_bg = "#022746",
+      normal_bg = "#16161D",
     },
     winblend = 0,
   },
@@ -25,9 +25,10 @@ local opts = {noremap = true, silent = true}
 vim.keymap.set('n', '<C-j>', '<Cmd>Lspsaga diagnostic_jump_next<cr>', opts)
 vim.keymap.set('n', '<C-k>', '<Cmd>Lspsaga diagnostic_jump_prev<cr>', opts)
 vim.keymap.set('n', 'K', '<Cmd>Lspsaga hover_doc<cr>', opts)
+vim.keymap.set('n', 'gd', '<Cmd>Lspsaga peek_definition<cr>', opts)
 vim.keymap.set('n', 'gf', '<Cmd>Lspsaga lsp_finder<cr>', opts)
-vim.keymap.set('i', '<C-h>', '<Cmd>Lspsaga signature_help<cr>', opts) -- help
-vim.keymap.set('n', 'gp', '<Cmd>Lspsaga preview_definition<cr>', opts)
+vim.keymap.set('i', '<C-h>', '<Cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+vim.keymap.set('n', 'gp', '<Cmd>Lspsaga peek_definition<cr>', opts)
 vim.keymap.set('n', 'rn', '<Cmd>Lspsaga rename<cr>', opts)
 vim.keymap.set('n', '<leader>d', '<Cmd>Lspsaga show_line_diagnostics<cr>', opts)
 vim.keymap.set('n', '<leader>d', '<Cmd>Lspsaga show_cursor_diagnostics<cr>', opts)
