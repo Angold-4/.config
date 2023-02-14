@@ -13,6 +13,8 @@ local on_attach = function(client, bufnr)
   end
 end
 
+vim.diagnostic.config({virtual_text = false, signs = false})
+
 nvim_lsp.ccls.setup {
   init_options = {
     cache = {
@@ -20,6 +22,8 @@ nvim_lsp.ccls.setup {
     };
   }
 }
+
+nvim_lsp.pyright.setup{}
 
 -- nvim_lsp.ccls.setup {
 --   init_options = {
@@ -50,3 +54,5 @@ nvim_lsp.sumneko_lua.setup {
     }
   }
 }
+
+require'lspconfig'.eslint.setup{}
