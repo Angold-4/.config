@@ -58,4 +58,4 @@ keymap.set("n", "<leader>x", "<Cmd>BufferClose<CR>")
 keymap.set({"n", "t"}, "<C-]>", "<Cmd>lua _HTOP_TOGGLE()<CR>")
 
 -- trouble
-keymap.set('n', '<C-d>', '<Cmd>TroubleToggle<CR>')
+keymap.set('n', '<C-w>', '<Cmd>TroubleToggle<CR>')
