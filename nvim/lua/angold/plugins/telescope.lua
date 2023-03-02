@@ -16,13 +16,17 @@ end
 
 local fb_actions = require 'telescope'.extensions.file_browser.actions
 
+local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
+
+
 -- configure telescope
 telescope.setup({
   -- configure custom mappings
   defaults = {
     mappings = {
       n = { 
-        ['q'] = actions.close
+        ['q'] = actions.close,
       },
       i = {
         ["<C-k>"] = actions.move_selection_previous, -- move to prev result

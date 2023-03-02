@@ -1,8 +1,6 @@
 local status, nvim_lsp = pcall(require, 'lspconfig')
 if (not status) then return end
 
-local protocol = require('vim.lsp.protocol')
-
 local on_attach = function(client, bufnr)
   -- formatting
   if client.server_capabilities.documentFormattingProvider then
@@ -55,4 +53,66 @@ nvim_lsp.sumneko_lua.setup {
   }
 }
 
+nvim_lsp.rust_analyzer.setup {
+  -- rust-tools options
+  tools = {
+    autoSetHints = true,
+    hover_with_actions = true,
+    inlay_hints = {
+      show_parameter_hints = true,
+      parameter_hints_prefix = "",
+      other_hints_prefix = "",
+      },
+    },
+
+  -- all the opts to send to nvim-lspconfig
+  -- these override the defaults set by rust-tools.nvim
+  -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+  -- https://rust-analyzer.github.io/manual.html#features
+  server = {
+    settings = {
+      ["rust-analyzer"] = {
+        assist = {
+          importEnforceGranularity = true,
+          importPrefix = "crate"
+          },
+        cargo = {
+          allFeatures = true
+          },
+        checkOnSave = {
+          -- default: `cargo check`
+          command = "clippy"
+          },
+        },
+        inlayHints = {
+          lifetimeElisionHints = {
+            enable = true,
+            useParameterNames = true
+          },
+        },
+      }
+    },
+}
+
 require'lspconfig'.eslint.setup{}
+
+require('lspconfig').gopls.setup{
+	cmd = {'gopls'},
+  settings = {
+    gopls = {
+      analyses = {
+        nilness = true,
+        unusedparams = true,
+        unusedwrite = true,
+        useany = true,
+      },
+      experimentalPostfixCompletions = true,
+      gofumpt = true,
+      staticcheck = true,
+      usePlaceholders = true,
+    },
+  },
+	on_attach = on_attach,
+}
+
+
