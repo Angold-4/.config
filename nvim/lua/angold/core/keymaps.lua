@@ -59,3 +59,7 @@ keymap.set({"n", "t"}, "<C-]>", "<Cmd>lua _HTOP_TOGGLE()<CR>")
 
 -- trouble
 keymap.set('n', '<C-w>', '<Cmd>TroubleToggle<CR>')
+
+-- copilot
+-- enable copilot when we want to use it
+keymap.set('n', '<C-c>', '<Cmd>Copilot disable<CR>')

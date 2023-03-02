@@ -39,6 +39,7 @@ return packer.startup(function(use)
     run = ':TSUpdate'
   }
 
+
   use('nvim-treesitter/playground')
   use('eandrju/cellular-automaton.nvim')
   use('theprimeagen/harpoon')
@@ -63,6 +64,7 @@ return packer.startup(function(use)
   end}
 
   use {'numToStr/Navigator.nvim'}
+  use {'github/copilot.vim'}
 
   use {
     "folke/trouble.nvim",
