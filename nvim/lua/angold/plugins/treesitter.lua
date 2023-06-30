@@ -1,11 +1,20 @@
 local status, ts = pcall(require, 'nvim-treesitter.configs')
 
+vim.api.nvim_exec([[
+  autocmd BufRead,BufNewFile *.Rmd set filetype=markdown
+]], false)
+
+vim.api.nvim_exec([[
+  autocmd BufRead,BufNewFile *.Rmarkdown set filetype=markdown
+]], false)
+
 if (not status) then return end;
 
 ts.setup {
   highlight = {
     enable = true;
     disable = {},
+    additional_vim_regex_highlighting = {'org'},
   },
   indent = {
     enable = true,
@@ -13,6 +22,7 @@ ts.setup {
   },
 
   ensure_installed = {
+    'r',
     'c',
     'cpp',
     'bash',

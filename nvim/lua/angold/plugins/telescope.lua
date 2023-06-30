@@ -17,7 +17,7 @@ end
 local fb_actions = require 'telescope'.extensions.file_browser.actions
 
 local actions = require("telescope.actions")
-local trouble = require("trouble.providers.telescope")
+-- local trouble = require("trouble.providers.telescope")
 
 
 -- configure telescope

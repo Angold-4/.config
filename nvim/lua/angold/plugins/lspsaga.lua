@@ -17,6 +17,9 @@ saga.setup({
   },
   symbol_in_winbar = {
     enable = false,
+  },
+  code_action_prompt = {
+    enable = false
   }
 })
 

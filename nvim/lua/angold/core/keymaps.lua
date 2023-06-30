@@ -21,8 +21,8 @@ keymap.set('n', 'dw', 'vb"_d') -- delete a word backwards
 keymap.set('n', '<C-a>', 'gg<S-v>G') -- select all
 
 -- 3. split the windows
-keymap.set("n", "<leader>sv", "<C-w>v") -- split vertically
-keymap.set("n", "<leader>sh", "<C-w>s") -- split horizontally
+keymap.set("n", "<leader>v", "<C-w>v") -- split vertically
+keymap.set("n", "<leader>h", "<C-w>s") -- split horizontally
 keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width
 keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
 
@@ -58,8 +58,11 @@ keymap.set("n", "<leader>x", "<Cmd>BufferClose<CR>")
 keymap.set({"n", "t"}, "<C-]>", "<Cmd>lua _HTOP_TOGGLE()<CR>")
 
 -- trouble
-keymap.set('n', '<C-w>', '<Cmd>TroubleToggle<CR>')
+-- keymap.set('n', '<C-w>', '<Cmd>TroubleToggle<CR>')
 
 -- copilot
 -- enable copilot when we want to use it
 keymap.set('n', '<C-c>', '<Cmd>Copilot disable<CR>')
+
+keymap.set("n", "<C-v>", "<C-w>v") -- split vertically
+keymap.set("n", "<C-_>", "<C-w>s") -- split horizontally

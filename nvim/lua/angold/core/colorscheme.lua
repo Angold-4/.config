@@ -9,6 +9,7 @@ vim.o.termguicolors = true
 
 local status, _ = pcall(vim.cmd, "silent! colorscheme kanagawa")
 
+
 if not status then
   print("colorscheme not found! please install it first!")
   return

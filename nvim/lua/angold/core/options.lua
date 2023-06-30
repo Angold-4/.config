@@ -37,4 +37,7 @@ opt.iskeyword:append("-")
 
 -- encoding
 opt.encoding = 'utf-8'
-opt.fileencoding = 'utf.8'
+opt.fileencoding = 'utf-8'
+
+vim.cmd('set encoding=utf-8')
+vim.cmd('set fileencoding=utf-8')
