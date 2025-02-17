@@ -23,6 +23,8 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("gnu" . "https://elpha.gnu.org/packages/") t)
 
 ;; Initialize the package system
 (package-initialize)
@@ -73,7 +75,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(org-bullets magit key-chord evil tree-sitter-langs rust-mode lsp-mode go-mode)))
+   '(solidity-mode magit ligature org-bullets key-chord evil tree-sitter-langs rust-mode lsp-mode go-mode)))
 
 (unless (package-installed-p 'key-chord)
   (package-refresh-contents)
@@ -107,23 +109,23 @@
 (define-key evil-normal-state-map (kbd "K") 'move-8-lines-up)
 
 ;; Install Magit if it's not already installed
-(unless (package-installed-p 'magit)
-  (package-refresh-contents)
-  (package-install 'magit))
+;; (unless (package-installed-p 'magit)
+;;  (package-refresh-contents)
+;;  (package-install 'magit))
 
 ;; Automatically show Magit status on startup if in a Git repository
 
-(defun open-magit-status-on-startup ()
-  (let ((default-directory (locate-dominating-file default-directory ".git")))
-    (when default-directory
-      (magit-status-setup-buffer default-directory)
-      ;; Kill the *scratch* buffer
-      (when (get-buffer "*scratch*")
-        (kill-buffer "*scratch*"))
+;; (defun open-magit-status-on-startup ()
+;;  (let ((default-directory (locate-dominating-file default-directory ".git")))
+;;    (when default-directory
+;;      (magit-status-setup-buffer default-directory)
+;;      ;; Kill the *scratch* buffer
+;;      (when (get-buffer "*scratch*")
+;;        (kill-buffer "*scratch*"))
       ;; Delete other windows to ensure only Magit status is displayed
-      (delete-other-windows))))
+;;      (delete-other-windows))))
 
-(add-hook 'emacs-startup-hook 'open-magit-status-on-startup)
+;; (add-hook 'emacs-startup-hook 'open-magit-status-on-startup)
 
 ;; split windows vertically by default
 (setq split-height-threshold nil)
@@ -146,7 +148,6 @@
   (define-key org-mode-map (kbd "C-j") nil)
   (define-key org-mode-map (kbd "C-k") nil))
 
-
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-l") 'windmove-right)
   (define-key org-mode-map (kbd "C-h") 'windmove-left)
@@ -159,7 +160,8 @@
   (evil-define-key 'normal evil-org-mode-map (kbd "C-j") 'windmove-down)
   (evil-define-key 'normal evil-org-mode-map (kbd "C-k") 'windmove-up))
 
-(setq org-agenda-files '("~/org/agenda"))
+(setq org-agenda-files '("~/org/agenda"
+			 "~/fuyukai.desu"))
 
 (require 'org)
 (define-key global-map "\C-cl" 'org-store-link)
@@ -195,3 +197,30 @@
 
 (define-key org-mode-map (kbd "C-c d") 'org-deadline)
 (define-key org-mode-map (kbd "C-c s") 'org-schedule)
+
+(global-set-key (kbd "C-c r") 'rename-buffer)
+
+(setq org-agenda-clockreport-parameter-plist '(:link t :maxlevel 3))
+
+(with-eval-after-load 'evil
+  (evil-define-key 'normal org-mode-map (kbd "TAB") #'org-cycle))
+
+(with-eval-after-load 'org-agenda
+  (define-key org-agenda-mode-map (kbd "C-h") 'windmove-left)
+  (define-key org-agenda-mode-map (kbd "C-l") 'windmove-right)
+  (define-key org-agenda-mode-map (kbd "C-j") 'windmove-up)
+  (define-key org-agenda-mode-map (kbd "C-k") 'windmove-down))
+
+(with-eval-after-load 'magit
+  (define-key magit-mode-map (kbd "C-h") 'windmove-left)
+  (define-key magit-mode-map (kbd "C-l") 'windmove-right)
+  (define-key magit-mode-map (kbd "C-j") 'windmove-down)
+  (define-key magit-mode-map (kbd "C-k") 'windmove-up))
+
+(set-face-attribute 'default nil :font "Cascadia Code PL-12")
+
+(setq ring-bell-function 'ignore)
+(setq visable-bell nil)
+
+(require 'solidity-mode)
+(define-key solidity-mode-map (kbd "C-c C-g") 'solidity-estimate-gas-at-point)
