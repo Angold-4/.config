@@ -34,12 +34,14 @@ return packer.startup(function(use)
   use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
 
   -- treesitter configuration
+
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
 
   use('nvim-treesitter/playground')
+
   use('eandrju/cellular-automaton.nvim')
   use('theprimeagen/harpoon')
 

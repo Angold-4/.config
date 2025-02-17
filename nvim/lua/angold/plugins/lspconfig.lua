@@ -1,5 +1,6 @@
 local status, nvim_lsp = pcall(require, 'lspconfig')
 if (not status) then return end
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
 vim.lsp.handlers["textDocument/codeAction"] = function(_, _, actions)
     if actions == nil or next(actions) == nil then
@@ -38,28 +39,7 @@ end
 
 vim.api.nvim_set_keymap('n', '<C-w>', '<cmd>lua _G.toggle_diagnostics()<CR>', {noremap = true, silent = true})
 
-nvim_lsp.ccls.setup {
-  init_options = {
-    cache = {
-      directory = ".ccls-cache";
-    };
-  }
-}
-
 nvim_lsp.pyright.setup{}
-
--- nvim_lsp.ccls.setup {
---   init_options = {
---     on_attach = on_attach,
---     compilationDatabaseDirectory = "build",
---     index = {
---       threads = 0;
---     };
---     clang = {
---       excludeArgs = { "-frounding-math"} ;
---     };
---   }
--- }
 
 nvim_lsp.lua_ls.setup {
   on_attach = on_attach,
@@ -117,6 +97,13 @@ nvim_lsp.rust_analyzer.setup {
         },
       }
     },
+}
+
+require'lspconfig'.clangd.setup{
+  cmd = {
+    "clangd",
+    "--offset-encoding=utf-16",
+  },
 }
 
 nvim_lsp.gopls.setup {

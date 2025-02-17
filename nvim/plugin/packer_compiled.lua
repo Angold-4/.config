@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/Users/angold/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["Navigator.nvim"] = {
+    loaded = true,
+    path = "/Users/angold/.local/share/nvim/site/pack/packer/start/Navigator.nvim",
+    url = "https://github.com/numToStr/Navigator.nvim"
+  },
   ["barbar.nvim"] = {
     loaded = true,
     path = "/Users/angold/.local/share/nvim/site/pack/packer/start/barbar.nvim",
@@ -103,6 +108,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/angold/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "/Users/angold/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,

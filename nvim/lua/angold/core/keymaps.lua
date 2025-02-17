@@ -2,11 +2,11 @@ local keymap = vim.keymap -- for conciseness
 
 -- general keymaps
 
--- 1. remapping the esc, feels right
-keymap.set("i", "jk", "<ESC>")
+-- 1. remapping the esc, feels right keymap.set("i", "jk", "<ESC>")
 keymap.set("i", "Jk", "<ESC>")
 keymap.set("i", "JK", "<ESC>")
 keymap.set("i", "jK", "<ESC>")
+keymap.set("i", "jk", "<ESC>")
 
 -- 2. remapping the leader key and some others
 vim.g.mapleader = " "
@@ -59,10 +59,6 @@ keymap.set({"n", "t"}, "<C-]>", "<Cmd>lua _HTOP_TOGGLE()<CR>")
 
 -- trouble
 -- keymap.set('n', '<C-w>', '<Cmd>TroubleToggle<CR>')
-
--- copilot
--- enable copilot when we want to use it
-keymap.set('n', '<C-c>', '<Cmd>Copilot disable<CR>')
 
 keymap.set("n", "<C-v>", "<C-w>v") -- split vertically
 keymap.set("n", "<C-_>", "<C-w>s") -- split horizontally

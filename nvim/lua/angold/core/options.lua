@@ -41,3 +41,6 @@ opt.fileencoding = 'utf-8'
 
 vim.cmd('set encoding=utf-8')
 vim.cmd('set fileencoding=utf-8')
+
+vim.g.copilot_enabled = false -- copilot is disabled by default
+-- could be enabled by ":Copilot enable"

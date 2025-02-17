@@ -10,6 +10,7 @@ end
 
 alias vim="/opt/homebrew/bin/nvim"
 alias nvim="/opt/homebrew/bin/nvim"
+alias cs="/usr/local/bin/chainsaw"
 
 switch (uname)
   case Darwin
@@ -33,6 +34,14 @@ set -l green 76946A
 set -l purple 957FB8
 set -l cyan 7AA89F
 set -l pink D27E99
+
+
+function fish_prompt
+    set_color $fish_color_cwd
+    echo -n (whoami)@nayami (prompt_pwd) '> '
+    set_color normal
+end
+
 
 # Syntax Highlighting Colors
 set -g fish_color_normal $foreground
