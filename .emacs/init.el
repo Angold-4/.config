@@ -1,9 +1,7 @@
-;; Remove toolbars and menu bars to save space
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-
 (setq make-backup-files nil)
+
+(tool-bar-mode -1)
+(menu-bar-mode -1) 
 
 ;; Set the default font size (optional)
 (set-face-attribute 'default nil :height 120)  ;; 120 is 12pt, adjust as needed.
@@ -13,9 +11,6 @@
 
 ;; Enable line numbers globally
 (global-display-line-numbers-mode t)
-
-;; Disable the toolbar (the graphical icons)
-(tool-bar-mode -1)
 
 (setq use-package-always-ensure t)
 
@@ -67,6 +62,8 @@
   (package-refresh-contents)
   (package-install 'evil))
 
+(setq select-enable-clipboard t)
+
 (require 'evil)
 (evil-mode 1) ; Enable Evil mode
 (custom-set-variables
@@ -75,7 +72,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(solidity-mode magit ligature org-bullets key-chord evil tree-sitter-langs rust-mode lsp-mode go-mode)))
+   '(typescript-mode pbcopy solidity-mode magit ligature org-bullets key-chord evil tree-sitter-langs rust-mode lsp-mode go-mode)))
 
 (unless (package-installed-p 'key-chord)
   (package-refresh-contents)
@@ -224,3 +221,45 @@
 
 (require 'solidity-mode)
 (define-key solidity-mode-map (kbd "C-c C-g") 'solidity-estimate-gas-at-point)
+
+;; Set zsh as the default shell
+(setq shell-file-name "/bin/zsh")
+(setq explicit-shell-file-name "/bin/zsh")
+;; Optional: use the login shell flag if you want zsh to load your profile
+(setq explicit-zsh-args '("-l"))
+
+(setq comint-process-echoes t)
+
+(add-hook 'shell-mode-hook
+  (lambda ()
+    (define-key shell-mode-map (kbd "<up>") 'comint-previous-input)
+    (define-key shell-mode-map (kbd "<down>") 'comint-next-input)
+    (define-key shell-mode-map (kbd "C-r") 'comint-history-isearch-backward)
+    (evil-define-key 'insert shell-mode-map (kbd "C-r") 'comint-history-isearch-backward)))
+
+(use-package copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)
+              ("C-n" . 'copilot-next-completion)
+              ("C-p" . 'copilot-previous-completion))
+
+  :config
+  (add-to-list 'copilot-indentation-alist '(prog-mode 2))
+  (add-to-list 'copilot-indentation-alist '(org-mode 2))
+  (add-to-list 'copilot-indentation-alist '(text-mode 2))
+  (add-to-list 'copilot-indentation-alist '(closure-mode 2))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2)))
+
+(defun my/copy-to-osx-clipboard (beg end)
+  "Copy region to the macOS clipboard using pbcopy."
+  (interactive "r")
+  (shell-command-on-region beg end "pbcopy")
+  (message "Copied to clipboard"))
+
+;; Remap visual mode yank to our custom function:
+(define-key evil-visual-state-map "y" 'my/copy-to-osx-clipboard)
+(define-key evil-visual-state-map (kbd "C-y") 'my/copy-to-osx-clipboard)
