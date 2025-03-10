@@ -1,0 +1,77 @@
+{
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false
+    },
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "L"
+            ],
+            "after": [
+                "$"
+            ]
+        },
+        {
+            "before": [
+                "J"
+            ],
+            "after": [
+                "<C-d>"
+            ]
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "after": [
+                "<C-u>"
+            ]
+        },
+        {
+            "before": [
+                "H"
+            ],
+            "after": [
+                "^"
+            ]
+        }
+    ],
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "editor.accessibilitySupport": "off",
+    "workbench.startupEditor": "none",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "editor.tabSize": 2,
+    "cmake.configureOnOpen": false,
+    "vim.commandLineModeKeyBindingsNonRecursive": [
+
+    ],
+    "gitlens.graph.minimap.enabled": false,
+    "github.copilot.selectedCompletionModel": "gpt-4o-copilot",
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.html": "default"
+    },
+    "liveServer.settings.donotShowInfoMsg": true,
+    "workbench.settings.applyToAllProfiles": [
+        
+    ],
+}
