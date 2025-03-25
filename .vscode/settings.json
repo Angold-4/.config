@@ -1,55 +1,61 @@
 {
     "github.copilot.enable": {
-        "*": true,
+        "*": false,
         "plaintext": true,
         "markdown": true,
-        "scminput": false
+        "scminput": false,
+        "go": false
     },
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": [
-                "L"
-            ],
-            "after": [
-                "$"
-            ]
+            "before": ["L"],
+            "after": ["$"]
         },
         {
-            "before": [
-                "J"
-            ],
-            "after": [
-                "<C-d>"
-            ]
+            "before": ["J"],
+            "after": ["<C-d>"]
         },
         {
-            "before": [
-                "K"
-            ],
-            "after": [
-                "<C-u>"
-            ]
+            "before": ["K"],
+            "after": ["<C-u>"]
         },
         {
-            "before": [
-                "H"
-            ],
-            "after": [
-                "^"
-            ]
+            "before": ["H"],
+            "after": ["^"]
+        },
+        {
+            "before": ["<C-j>"],
+            "commands": ["workbench.action.focusBelowGroup"]
+        },
+        {
+            "before": ["<C-k>"],
+            "commands": ["workbench.action.focusAboveGroup"]
+        },
+        {
+            "before": ["<C-h>"],
+            "commands": ["workbench.action.focusLeftGroup"]
+        },
+        {
+            "before": ["<C-l>"],
+            "commands": ["workbench.action.focusRightGroup"]
+        },
+        {
+            "before": ["<C-s>"],
+            "commands": ["workbench.action.files.save"]
         }
     ],
     "vim.insertModeKeyBindingsNonRecursive": [
         {
-            "before": [
-                "j",
-                "k"
-            ],
-            "after": [
-                "<Esc>"
-            ]
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
         }
     ],
+    "vim.handleKeys": {
+        "<C-j>": false,
+        "<C-k>": false,
+        "<C-h>": false,
+        "<C-l>": false
+    },
     "git.confirmSync": false,
     "git.autofetch": true,
     "editor.accessibilitySupport": "off",
@@ -61,9 +67,7 @@
     },
     "editor.tabSize": 2,
     "cmake.configureOnOpen": false,
-    "vim.commandLineModeKeyBindingsNonRecursive": [
-
-    ],
+    "vim.commandLineModeKeyBindingsNonRecursive": [],
     "gitlens.graph.minimap.enabled": false,
     "github.copilot.selectedCompletionModel": "gpt-4o-copilot",
     "workbench.editorAssociations": {
@@ -71,7 +75,6 @@
         "*.html": "default"
     },
     "liveServer.settings.donotShowInfoMsg": true,
-    "workbench.settings.applyToAllProfiles": [
-        
-    ],
+    "workbench.settings.applyToAllProfiles": []
 }
+
